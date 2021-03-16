@@ -96,16 +96,16 @@ View::render('Home/index.php', [
 ]);
 ```
 
-The second format uses the [Twig](http://twig.sensiolabs.org/) templating engine. Using Twig allows you to have simpler, safer templates that can take advantage of things like [template inheritance](http://twig.sensiolabs.org/doc/templates.html#template-inheritance). You can render a Twig template like this:
+The second format uses the [BladeOne](https://github.com/EFTEC/BladeOne/) templating engine. Using Twig allows you to have simpler, safer templates that can take advantage of things like [template inheritance](https://github.com/EFTEC/BladeOne/wiki/Template-inheritance). You can render a Twig template like this:
 
 ```php
-View::renderTemplate('Home/index.html', [
+View::renderTemplate('Home.index', [
     'name'    => 'Dave',
     'colours' => ['red', 'green', 'blue']
 ]);
 ```
 
-A sample Twig template is included in [App/Views/Home/index.html](App/Views/Home/index.html) that inherits from the base template in [App/Views/base.html](App/Views/base.html).
+A sample Twig template is included in [App/Views/Home/index.blade.php](App/Views/Home/index.blade.php) that inherits from the base template in [App/Views/base.blade.php](App/Views/base.blade.php).
 
 ## Models
 

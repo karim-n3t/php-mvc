@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use eftec\bladeone\BladeOne;
 /**
  * View
  *
@@ -41,13 +42,14 @@ class View
      */
     public static function renderTemplate($template, $args = [])
     {
-        static $twig = null;
+        static $blade = null;
 
-        if ($twig === null) {
-            $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/App/Views');
-            $twig = new \Twig\Environment($loader);
+        if ($blade === null) {
+            $views = dirname(__DIR__) . '/App/Views';
+            $cache = dirname(__DIR__) . '/cache';
+            $blade = new BladeOne($views,$cache,BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
         }
 
-        echo $twig->render($template, $args);
+        echo $blade->run($template, $args);
     }
 }
