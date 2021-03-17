@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title')</title>
+    <title>App | @yield('title')</title>
 </head>
 <body>
     @yield('body')

@@ -4,6 +4,6 @@
 
 @section('body')
 
-    <h1>Welcome</h1>
+    <h1>Welcome {{$id ?? ''}}</h1>
 
 @endsection

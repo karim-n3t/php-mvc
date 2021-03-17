@@ -20,32 +20,28 @@ Configuration settings are stored in the [App/Config.php](App/Config.php) class.
 
 ## Routing
 
-The [Router](Core/Router.php) translates URLs into controllers and actions. Routes are added in the [front controller](public/index.php). A sample home route is included that routes to the `index` action in the [Home controller](App/Controllers/Home.php).
+The [Routes](App/Routes.php) translates URLs into controllers and actions. Routes are added in the [front controller](public/index.php). A sample home route is included that routes to the `index` action in the [Home controller](App/Controllers/Home.php).
 
-Routes are added with the `add` method. You can add fixed URL routes, and specify the controller and action, like this:
+Routes are added with the `addRoute` method. You can add fixed URL routes, and specify the controller and action, like this:
 
 ```php
-$router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('posts/index', ['controller' => 'Posts', 'action' => 'index']);
+$route->addRoute('GET', '/', 'Controller@action');
+$route->addRoute('GET', '/users', 'Controller@action');
 ```
 
-Or you can add route **variables**, like this:
+Or you can addRoute route **variables**, like this:
 
 ```php
-$router->add('{controller}/{action}');
+$route->addRoute('GET', '/user/{id}', 'Controller@action');
 ```
 
 In addition to the **controller** and **action**, you can specify any parameter you like within curly braces, and also specify a custom regular expression for that parameter:
 
 ```php
-$router->add('{controller}/{id:\d+}/{action}');
+$route->addRoute('GET', '/user/{id:\d+}', 'Controller@action');
 ```
 
-You can also specify a namespace for the controller:
-
-```php
-$router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
-```
+You can see more information in the [FastRoute](https://github.com/nikic/FastRoute) library.
 
 ## Controllers
 
@@ -123,6 +119,16 @@ If the `SHOW_ERRORS` configuration setting is set to `true`, full error detail w
 
 Pretty URLs are enabled using web server rewrite rules. An [.htaccess](public/.htaccess) file is included in the `public` folder. Equivalent nginx configuration is in the [nginx-configuration.txt](nginx-configuration.txt) file.
 
----
+## Used libraries
 
-Signup for the course [here](https://davehollingworth.net/phpmvcg) and understand how this framework is built from scratch, putting it all together step by step.
+* [nikic/fast-route](https://github.com/nikic/FastRoute)
+* [eftec/bladeone](https://github.com/EFTEC/BladeOne)
+
+## Authors
+
+* **Dave Hollingworth** - *Initial work* - [php-mvc](https://github.com/daveh)
+* **Anas Mazouni** - *Inspiration* - [php-mvc-boilerplate](https://github.com/stormiix)
+* **Fathul Karim** - [php-mvc](https://github.com/karim-n3t)
+
+See also the list of [contributors](https://github.com/karim-n3t/php-mvc/contributors) who participated in this project.
+

@@ -23,10 +23,4 @@ set_exception_handler('Core\Error::exceptionHandler');
 /**
  * Routing
  */
-$router = new Core\Router();
-
-// Add the routes
-$router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('{controller}/{action}');
-    
-$router->dispatch($_SERVER['QUERY_STRING']);
+require_once dirname(__DIR__) . '/Core/Router.php';

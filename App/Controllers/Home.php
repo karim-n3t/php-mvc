@@ -21,4 +21,9 @@ class Home extends \Core\Controller
     {
         View::renderTemplate('Home.index');
     }
+
+    public function getUserId($id = null)
+    {
+        View::renderTemplate('Home.index', ['id' => $id]);
+    }
 }
